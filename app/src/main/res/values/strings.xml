@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">makerthon</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="healthy_eating">Healthy Eating</string>
+    <string name="log_in">Log in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="register">Register</string>
+    <string name="title_activity_home">homeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="account">Account</string>
+    <string name="history">History</string>
+    <string name="home">Home</string>
+</resources>
