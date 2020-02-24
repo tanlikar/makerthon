@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         // Setting toolbar as the ActionBar with setSupportActionBar() call
         setSupportActionBar(toolbar);
 
+        loadFragment(new homeFragment());
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -34,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.navigation_home:
                         toolbar.setTitle("Home");
+                        loadFragment(new homeFragment());
                         return true;
-                    case R.id.navigation_history:
+                    case R.id.navigation_transaction:
                         toolbar.setTitle("History");
                         return true;
                     case R.id.navigation_account:
@@ -47,4 +50,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragContainer, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 }

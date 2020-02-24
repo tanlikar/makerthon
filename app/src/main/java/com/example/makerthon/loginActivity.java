@@ -84,24 +84,7 @@ public class loginActivity extends AppCompatActivity implements childKey {
 
                                 mPref.putString(EMAIL, email);
                                 mPref.putString(PASSWORD, password);
-
-                                mDatabase.child("users").child(task.getResult().getUser().getUid()).child("Username").addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                                        if(dataSnapshot.exists()) {
-                                            String username = (String) dataSnapshot.getValue();
-                                            Toast.makeText(loginActivity.this, username, Toast.LENGTH_SHORT).show();
-                                            mPref.putString(USERNAME, username);
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                    }
-                                });
-
+//                                mPref.putString(UID, task.getResult().getUser().getUid());
 
                                 Intent intent = new Intent(loginActivity.this, MainActivity.class);
                                 startActivity(intent);

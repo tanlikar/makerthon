@@ -7,9 +7,9 @@
         android:title="@string/home" />
 
     <item
-        android:id="@+id/navigation_history"
+        android:id="@+id/navigation_transaction"
         android:icon="@drawable/ic_list_black"
-        android:title="@string/history" />
+        android:title="@string/transaction" />
 
     <item
         android:id="@+id/navigation_account"

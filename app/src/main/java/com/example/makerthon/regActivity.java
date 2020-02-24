@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import com.google.firebase.FirebaseApiNotAvailableException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -97,19 +99,32 @@ public class regActivity extends AppCompatActivity implements childKey {
                                                 Toast.LENGTH_SHORT).show();
                                     } else {
 
-                                        String userId = task.getResult().getUser().getUid();
-                                        mDatabase.child("users").child(userId).child("Username").setValue(username);
-                                        mDatabase.child("users").child(userId).child("point").setValue(0);
+                                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                        UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder().setDisplayName(username).build();
 
-                                        mPref.putString(USERNAME, username);
+                                        user.updateProfile(profileUpdate).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()){
+                                                    Log.d("profile", "onComplete: " + "profile updated");
+                                                }
+                                            }
+                                        });
+
+                                        String userId = task.getResult().getUser().getUid();
+                                        mDatabase.child(firebaseUser).child(userId).child("point").setValue(0);
+
                                         mPref.putString(EMAIL, email);
                                         mPref.putString(PASSWORD, password);
+//                                        mPref.putString(UID, task.getResult().getUser().getUid());
 
                                         startActivity(new Intent(regActivity.this, MainActivity.class));
                                         finish();
                                     }
                                 }
                             });
+
+
 
 
                 }
