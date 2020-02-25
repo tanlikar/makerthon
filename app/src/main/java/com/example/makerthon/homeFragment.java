@@ -124,7 +124,9 @@ public class homeFragment extends Fragment implements childKey {
         String result = scanResult.getContents();
         String[] arrOfStrresult = result.split("_");
 
-        //UID_100_apple_1
+        //UID_100_apple_1 for product
+        //VEN_1 for vending machine
+        Log.d("UID", "onActivityResult: " + arrOfStrresult[0].equals("UID"));
 
         if(arrOfStrresult[0].equals("UID")){
 
@@ -132,7 +134,7 @@ public class homeFragment extends Fragment implements childKey {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                    if(dataSnapshot.exists()){
+                    try{
                         for (DataSnapshot snapshot : dataSnapshot.getChildren())
                         {
                             if(snapshot.getValue().toString().equals(arrOfStrresult[3])){
@@ -160,6 +162,7 @@ public class homeFragment extends Fragment implements childKey {
                             });
                         }
 
+                    }catch(Exception ignored){
                     }
 
                 }
@@ -171,6 +174,10 @@ public class homeFragment extends Fragment implements childKey {
             });
 
 
+        }
+        else if(arrOfStrresult[0].equals("VEN")){
+            Intent intent = new Intent(getActivity(), paymentActivity.class);
+            startActivity(intent);
         }
 
 
