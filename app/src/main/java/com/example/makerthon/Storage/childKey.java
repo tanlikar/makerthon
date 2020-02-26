@@ -10,5 +10,7 @@ public interface childKey {
     String firebaseUser = "users";
     String product = "product";
     String productUid = "productUid";
-    String userPoint = "point";
+    String firebasePoint = "point";
+    String VENID = "venId";
+    String firebaseTransaction = "transaction";
 }

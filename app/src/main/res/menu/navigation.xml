@@ -7,11 +7,6 @@
         android:title="@string/home" />
 
     <item
-        android:id="@+id/navigation_transaction"
-        android:icon="@drawable/ic_list_black"
-        android:title="@string/transaction" />
-
-    <item
         android:id="@+id/navigation_account"
         android:icon="@drawable/ic_account_black"
         android:title="@string/account" />

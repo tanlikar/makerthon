@@ -38,9 +38,7 @@ public class MainActivity extends AppCompatActivity {
                         toolbar.setTitle("Home");
                         loadFragment(new homeFragment());
                         return true;
-                    case R.id.navigation_transaction:
-                        toolbar.setTitle("History");
-                        return true;
+
                     case R.id.navigation_account:
                         toolbar.setTitle("Account");
                         return true;

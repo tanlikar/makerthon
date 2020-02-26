@@ -1,13 +1,9 @@
 package com.example.makerthon;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -22,7 +18,6 @@ import android.widget.Toast;
 import com.example.makerthon.Storage.childKey;
 import com.example.makerthon.viewAdapter.customGridAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -108,6 +103,10 @@ public class homeFragment extends Fragment implements childKey {
                     integrator.setPrompt("Scan QR Code");
                     integrator.setOrientationLocked(true);
                     integrator.forSupportFragment(homeFragment.this).initiateScan();
+                }else if(i == 1){
+
+                    Intent intent = new Intent(getActivity(), productActivity.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -151,7 +150,7 @@ public class homeFragment extends Fragment implements childKey {
                             containUid = false;
                         }else {
                             mDatabaseReference.child(product).child(productUid).child(arrOfStrresult[2]).push().setValue(arrOfStrresult[3]);
-                            mDatabaseReference.child(firebaseUser).child(uid).child(userPoint).setValue(point + Long.parseLong(arrOfStrresult[1])).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            mDatabaseReference.child(firebaseUser).child(uid).child(firebasePoint).setValue(point + Long.parseLong(arrOfStrresult[1])).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
@@ -177,6 +176,7 @@ public class homeFragment extends Fragment implements childKey {
         }
         else if(arrOfStrresult[0].equals("VEN")){
             Intent intent = new Intent(getActivity(), paymentActivity.class);
+            intent.putExtra(VENID, arrOfStrresult[1]);
             startActivity(intent);
         }
 
