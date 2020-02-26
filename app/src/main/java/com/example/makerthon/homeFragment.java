@@ -180,7 +180,6 @@ public class homeFragment extends Fragment implements childKey {
             startActivity(intent);
         }
 
-
         if (scanResult != null) {
             Toast.makeText(getActivity(), scanResult.getContents(), Toast.LENGTH_SHORT).show();
         }

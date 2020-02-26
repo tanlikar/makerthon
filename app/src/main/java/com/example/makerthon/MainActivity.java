@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.navigation_account:
                         toolbar.setTitle("Account");
+                        loadFragment(new accountFragment());
                         return true;
                 }
                 return false;
