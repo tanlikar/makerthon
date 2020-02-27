@@ -43,8 +43,6 @@ public class regActivity extends AppCompatActivity implements childKey {
         // Setting toolbar as the ActionBar with setSupportActionBar() call
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         mUsername = findViewById(R.id.editTextUsername);
         mPassword = findViewById(R.id.editTextPasswordReg);
@@ -52,9 +50,24 @@ public class regActivity extends AppCompatActivity implements childKey {
         mRegButton = findViewById(R.id.RegButton);
         mEmail = findViewById(R.id.editTextEmail);
 
+        mPassword.setHint("Password");
+        mPasswordConfirm.setHint("Confirm Password");
+
         auth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mPref = new AppPref(this);
+
+        Button switchLog = findViewById(R.id.btn_login);
+
+        switchLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(regActivity.this, loginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         mRegButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,17 +145,4 @@ public class regActivity extends AppCompatActivity implements childKey {
         });
 
     }
-
-    @Override
-    public void onBackPressed() {
-
-        super.onBackPressed();
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
 }

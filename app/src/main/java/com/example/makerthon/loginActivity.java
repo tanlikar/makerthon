@@ -50,13 +50,21 @@ public class loginActivity extends AppCompatActivity implements childKey {
         // Setting toolbar as the ActionBar with setSupportActionBar() call
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         mEmail = findViewById(R.id.editTextEmail);
         mPassword = findViewById(R.id.editTextPassword);
         mLogin = findViewById(R.id.loginButton);
 
+        Button switchReg = findViewById(R.id.btn_reg);
+
+        switchReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(loginActivity.this, regActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,18 +105,5 @@ public class loginActivity extends AppCompatActivity implements childKey {
             }
         });
     }
-
-    @Override
-    public void onBackPressed() {
-
-        super.onBackPressed();
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
 
 }

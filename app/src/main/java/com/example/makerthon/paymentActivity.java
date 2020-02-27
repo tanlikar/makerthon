@@ -188,6 +188,7 @@ public class paymentActivity extends AppCompatActivity implements childKey {
                 dialog.dismiss();
                 Intent intent = new Intent(activity, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

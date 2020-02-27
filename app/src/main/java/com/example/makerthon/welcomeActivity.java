@@ -76,6 +76,7 @@ public class welcomeActivity extends AppCompatActivity implements childKey {
                 //TODO transistion to login activity
                 Intent intent = new Intent(welcomeActivity.this, loginActivity.class);
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -86,6 +87,7 @@ public class welcomeActivity extends AppCompatActivity implements childKey {
                 //TODO transistion to register activity
                 Intent intent = new Intent(welcomeActivity.this, regActivity.class);
                 startActivity(intent);
+                finish();
 
             }
         });
