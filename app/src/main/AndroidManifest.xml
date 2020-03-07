@@ -19,10 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".productActivity"></activity>
+        <activity android:name=".displayFact"></activity>
+        <activity android:name=".productActivity" />
         <activity
             android:name=".paymentActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".regActivity"
             android:screenOrientation="portrait" />

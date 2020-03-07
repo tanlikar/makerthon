@@ -146,7 +146,7 @@ public class homeFragment extends Fragment implements childKey {
 
                         if(containUid == true) {
                             viewDialog alert = new viewDialog();
-                            alert.showDialogError(getActivity(), "QR code already scanned");
+                            alert.showDialogError(getActivity(), "QR code already scanned", arrOfStrresult[2]);
                             containUid = false;
                         }else {
                             mDatabaseReference.child(product).child(productUid).child(arrOfStrresult[2]).push().setValue(arrOfStrresult[3]);
@@ -155,7 +155,7 @@ public class homeFragment extends Fragment implements childKey {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         viewDialog alert = new viewDialog();
-                                        alert.showDialogCorrect(getActivity(), arrOfStrresult[1] + " points added");
+                                        alert.showDialogCorrect(getActivity(), arrOfStrresult[1] + " points added",arrOfStrresult[2]);
                                     }
                                 }
                             });

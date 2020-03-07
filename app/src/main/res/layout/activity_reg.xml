@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_email"
         android:drawableLeft="@drawable/ic_email"
-        android:hint="Emai"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintHorizontal_bias="0.496"

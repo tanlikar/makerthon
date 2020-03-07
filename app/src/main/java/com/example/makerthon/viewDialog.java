@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class viewDialog {
 
-    public void showDialogError(Activity activity, String msg){
+    public void showDialogError(Activity activity, String msg, String product){
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
@@ -32,6 +32,13 @@ public class viewDialog {
             @Override
             public void onClick(View view) {
                 //TODO add intent for display info
+                Intent intent = new Intent(activity, displayFact.class);
+                if(product.equals("apple")) {
+                    intent.putExtra("picture", R.drawable.nutritionfacts_apple);
+                }else if(product.equals("orange")){
+                    intent.putExtra("picture", R.drawable.nutrition_fact_orange);
+                }
+                activity.startActivity(intent);
             }
         });
 
@@ -39,7 +46,7 @@ public class viewDialog {
 
     }
 
-    public void showDialogCorrect(Activity activity, String msg){
+    public void showDialogCorrect(Activity activity, String msg, String product){
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
@@ -61,6 +68,14 @@ public class viewDialog {
             @Override
             public void onClick(View view) {
                 //TODO add intent for display info
+                Intent intent = new Intent(activity, displayFact.class);
+                if(product.equals("apple")) {
+                    intent.putExtra("picture", R.drawable.nutritionfacts_apple);
+                }else if(product.equals("orange")){
+                    intent.putExtra("picture", R.drawable.nutrition_fact_orange);
+                }
+                activity.startActivity(intent);
+
             }
         });
 

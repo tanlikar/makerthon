@@ -43,6 +43,7 @@ public class welcomeActivity extends AppCompatActivity implements childKey {
         try {
             email = mPref.getString(EMAIL);
             password = mPref.getString(PASSWORD);
+            //Toast.makeText(this, email + " " + password,Toast.LENGTH_SHORT).show();
         }catch (Exception ignored){
 
         }
